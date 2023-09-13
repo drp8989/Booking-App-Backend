@@ -2,6 +2,7 @@ import  express  from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 //routes
 import authRoute from "./routes/auth.js";
 import userRoute from "./routes/users.js"
@@ -10,8 +11,11 @@ import roomRoute from "./routes/rooms.js"
 
 
 const app=express();
+app.use(cors());
 dotenv.config();
 app.use(cookieParser());
+
+
 
 const connect=async()=>{
       mongoose.connect(process.env.MONGO, {
